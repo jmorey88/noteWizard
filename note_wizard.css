@@ -312,6 +312,16 @@ body {
   color: #000;
 }
 
+.github {
+  width: 30px;
+  height: 30px;
+}
+
+.linkdin {
+  width: 30px;
+  height: 30px;
+}
+
 .copyright {
   font-size: 18px;
   display: flex;

@@ -1,7 +1,7 @@
 {
     "name": "notewizard",
     "version": "1.0.0",
-    "description": "A brief description of your project",
+    "description": "A music education game teaching users to read music notes using a virtual paino keyboard and flash cards.",
     "main": "index.js",
     "scripts": {
       "webpack-dev": "webpack --watch --mode=development"
