@@ -20,8 +20,8 @@ class Deck {
   #displayCard(topCard) {
     const img = document.createElement('img')
     img.src = topCard.value
-    img.alt = 'displayedCard'
-    img.id = 'card_img'
+    img.alt = 'displayed-card'
+    img.id = 'card-img'
 
     const container = document.querySelector(".deck")
     container.appendChild(img)
@@ -29,7 +29,7 @@ class Deck {
 
   #removeCard() {
     const container = document.querySelector(".deck")
-    const card = document.getElementById("card_img")
+    const card = document.getElementById("card-img")
 
     if (card) {
       container.removeChild(card)
@@ -51,14 +51,14 @@ class Deck {
   }
 
   #renderCardCount() {
-    const container = document.querySelector(".cardCount")
+    const container = document.querySelector(".card-count")
     container.innerHTML = this.#cardCountHTML()
   }
 
   #cardCountHTML() {
     const cardCount = Object.keys(noteImages).length
     return `
-      <div class="cardCount">
+      <div class="card-count">
         ${this.currentDeck.length}/${cardCount}
       </div>
     `

@@ -19,7 +19,6 @@ body {
 .title {
   width: 35%;
   height: 4%;
-  float: left;
   margin: 0;
 }
 
@@ -30,7 +29,7 @@ body {
 
 /* Deck */
 
-.deckInfoContainer {
+.deck-info-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -52,14 +51,14 @@ body {
   background-color: #eeece3;
 }
 
-#card_img {
+#card-img {
   width: 100%;
   height: 100%;
   border-radius: 25px;
 }
 
-.cardCount {
-  font-size: xx-large;
+.card-count {
+  font-size: 40px;
   font-weight: bold;
   letter-spacing: 2px;
   font-family: Tahoma, sans-serif;
@@ -67,7 +66,7 @@ body {
   -webkit-text-stroke: 1.5px black;
 }
 
-/* correct/incorrect */
+/* Display for correct/incorrect note selection */
 
 .text {
   height: 5%;
@@ -83,7 +82,7 @@ body {
     1px 1px 0 #000;
 }
 
-.placeHolder {
+.place-holder {
   display: block;
   height: 10%;
   padding-bottom: 2%;
@@ -115,9 +114,9 @@ body {
   box-shadow: 15px 10px 8px;
 }
 
-.white_key {
+.white-key {
   display: flex;
-  border: 1px solid black;
+  border: 1px solid #000000;
   width: 7%;
   height: 100%;
   position: relative;
@@ -125,7 +124,7 @@ body {
   border-radius: 0 0 10px 10px;
 }
 
-.white_key.first {
+.white-key.first {
   border-radius: 10px 0 10px 10px;
   font-size: 14px;
   font-weight: bolder;
@@ -135,11 +134,11 @@ body {
   font-family: Tahoma, sans-serif;
 }
 
-.white_key.last {
+.white-key.last {
   border-radius: 0 10px 10px 10px;
 }
 
-.black_key {
+.black-key {
   display: flex;
   border: 1px solid rgb(20, 20, 20);
   background-color: rgb(22, 21, 21);
@@ -150,57 +149,57 @@ body {
   border-radius: 0 0 10px 10px;
 }
 
-.white_key:hover{
-  background-color: lightgray;
+.white-key:hover{
+  background-color: #d3d3d3;
   cursor: pointer;
 }
 
-.black_key:hover {
-  background-color: gray;
+.black-key:hover {
+  background-color: #808080;
   cursor: pointer;
 }
 
-  .black_key.b1 {
-    left: 11.6%;
-  }
+.black-key.b1 {
+  left: 11.6%;
+}
 
-  .black_key.b2 {
-    left: 17.6%;
-  }
+.black-key.b2 {
+  left: 17.6%;
+}
 
-  .black_key.b3 {
-    left: 29.5%;
-  }
+.black-key.b3 {
+  left: 29.5%;
+}
 
-  .black_key.b4 {
-    left: 35.6%;
-  }
+.black-key.b4 {
+  left: 35.6%;
+}           
 
-  .black_key.b5 {
-    left: 41.7%;
-  }
+.black-key.b5 {
+  left: 41.7%;
+}
 
-  .black_key.b6 {
-    left: 53.6%;
-  }
+.black-key.b6 {
+  left: 53.6%;
+}
 
-  .black_key.b7 {
-    left: 59.6%;
-  }
+.black-key.b7 {
+  left: 59.6%;
+}
 
-  .black_key.b8 {
-    left: 71.6%;
-  }
+.black-key.b8 {
+  left: 71.6%;
+}
 
-  .black_key.b9 {
-    left: 77.9%;
-  }
+.black-key.b9 {
+  left: 77.9%;
+}
 
-  .black_key.b10 {
-    left: 83.6%;
-  }
+.black-key.b10 {
+  left: 83.6%;
+}
 
-/* play again popup */
+/* Play again popup */
 
 .popup {
   display: none;
@@ -235,11 +234,11 @@ body {
 }
 
 #play-again-button:hover {
-  background-color: lightgray;
+  background-color: #d3d3d3;
   cursor: pointer;
 }
 
-/* instructions popup */
+/* Instructions popup */
 
 .instructions {
   display: none;
@@ -275,11 +274,11 @@ body {
 }
 
 #play-button:hover {
-  background-color: lightgrey;
+  background-color: #d3d3d3;
   cursor: pointer;
 }
 
-/* footer */
+/* Footer */
 
 .footer {
   display: flex;
@@ -299,7 +298,7 @@ body {
   border-radius: 3px;
 }
 
-.socialLinks {
+.social-links {
   display: flex;
   font-size: 18px;
   justify-content: space-evenly;
@@ -307,19 +306,21 @@ body {
   width: 100%;
 }
 
-.socialLinks a {
+.social-links a {
   font-size: 22px;
   color: #000;
 }
 
 .github {
-  width: 30px;
-  height: 30px;
+  display: flex;
+  width: 20%;
+  height: 70%;
 }
 
-.linkdin {
-  width: 30px;
-  height: 30px;
+.linkedin {
+  display: flex;
+  width: 20%;
+  height: 70%;
 }
 
 .copyright {
@@ -332,7 +333,7 @@ body {
 
 
 /* ///////////////// */
-/* for mobile landscape styling */
+/* For mobile landscape styling */
 /* ///////////// */
 
 
@@ -341,7 +342,7 @@ body {
     height: 12%;
   }
 
-  .deckInfoContainer {
+  .deck-info-container {
     padding-top: 0%;
     height: 25%;
   }
@@ -351,7 +352,7 @@ body {
     width: 13%;
   }
 
-  .placeHolder {
+  .place-holder {
     margin-top: 0%;
   }
 
@@ -367,49 +368,49 @@ body {
     height: 33%;
   }
 
-  .black_key {
+  .black-key {
     height: 20%;
   }
 
-    .black_key.b1 {
-      left: 10.6%;
-    }
-  
-    .black_key.b2 {
-      left: 16.6%;
-    }
-  
-    .black_key.b3 {
-      left: 28.5%;
-    }
-  
-    .black_key.b4 {
-      left: 34.6%;
-    }
-  
-    .black_key.b5 {
-      left: 40.7%;
-    }
-  
-    .black_key.b6 {
-      left: 52.6%;
-    }
-  
-    .black_key.b7 {
-      left: 58.6%;
-    }
-  
-    .black_key.b8 {
-      left: 70.6%;
-    }
-  
-    .black_key.b9 {
-      left: 76.9%;
-    }
-  
-    .black_key.b10 {
-      left: 82.6%;
-    }
+  .black-key.b1 {
+    left: 10.6%;
+  }
+
+  .black-key.b2 {
+    left: 16.6%;
+  }
+
+  .black-key.b3 {
+    left: 28.5%;
+  }
+
+  .black-key.b4 {
+    left: 34.6%;
+  }
+
+  .black-key.b5 {
+    left: 40.7%;
+  }
+
+  .black-key.b6 {
+    left: 52.6%;
+  }
+
+  .black-key.b7 {
+    left: 58.6%;
+  }
+
+  .black-key.b8 {
+    left: 70.6%;
+  }
+
+  .black-key.b9 {
+    left: 76.9%;
+  }
+
+  .black-key.b10 {
+    left: 82.6%;
+  }
 
   .footer {
     height: 10%;
@@ -417,7 +418,7 @@ body {
 }
 
 /* //////////// */
-/* for laptop styling */
+/* For laptop styling */
 /* ///////////// */
 
 
@@ -431,49 +432,49 @@ body {
     margin-left: 10%;
   }
 
-  .white_key.first {
+  .white-key.first {
     font-size: 20px;
   }
   
-    .black_key.b1 {
-      left: 18.9%;
-    }
-    
-    .black_key.b2 {
-      left: 23.6%;
-    }
-    
-    .black_key.b3 {
-      left: 32.9%;
-    }
-    
-    .black_key.b4 {
-      left: 37.6%;
-    }
-    
-    .black_key.b5 {
-      left: 42.2%;
-    }
-    
-    .black_key.b6 {
-      left: 51.6%;
-    }
-    
-    .black_key.b7 {
-      left: 56.2%;
-    }
-    
-    .black_key.b8 {
-      left: 65.6%;
-    }
-    
-    .black_key.b9 {
-      left: 70.2%;
-    }
-    
-    .black_key.b10 {
-      left: 74.9%;
-    }
+  .black-key.b1 {
+    left: 18.9%;
+  }
+  
+  .black-key.b2 {
+    left: 23.6%;
+  }
+  
+  .black-key.b3 {
+    left: 32.9%;
+  }
+  
+  .black-key.b4 {
+    left: 37.6%;
+  }
+  
+  .black-key.b5 {
+    left: 42.2%;
+  }
+  
+  .black-key.b6 {
+    left: 51.6%;
+  }
+  
+  .black-key.b7 {
+    left: 56.2%;
+  }
+  
+  .black-key.b8 {
+    left: 65.6%;
+  }
+  
+  .black-key.b9 {
+    left: 70.2%;
+  }
+  
+  .black-key.b10 {
+    left: 74.9%;
+  }
   
   #correct {
     font-size: 40px;
