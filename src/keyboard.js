@@ -1,16 +1,16 @@
-class Keyboard{
+export class Keyboard{
   constructor(notePressedCallback) {
     this.notePressedCallback = notePressedCallback
     this.#render()
     this.#bindNotes()
   }
 
-  #render() {
+  #render = () => {
     const container = document.querySelector('.keyboard')
     container.innerHTML = this.#keyboardHTML()
   }
 
-  #bindNotes() {
+  #bindNotes = () => {
     const newElement = document.querySelector('.keyboard')
     const keys = newElement.querySelectorAll('.white-key, .black-key')
     
@@ -24,8 +24,8 @@ class Keyboard{
     })
   }
 
-  #keyboardHTML() {
-    return `
+  #keyboardHTML = () => 
+    `
       <div class="white-key first" data-key="C4" >C4</div>
       <div class="black-key b1" data-key="C#4 / Db4"></div>
       <div class="white-key" data-key="D4"></div>
@@ -51,8 +51,7 @@ class Keyboard{
       <div class="black-key b10" data-key="A#5 / Bb5"></div>
       <div class="white-key" data-key="B5"></div>
       <div class="white-key last" data-key="C6"></div>
-  `}
-
+  `
 }
 
 
@@ -84,4 +83,3 @@ const audio_files = {
   'C6': 'https://notemaster.s3.us-west-1.amazonaws.com/noteMasterAudio/C6.mp3'
 }
 
-module.exports = Keyboard
