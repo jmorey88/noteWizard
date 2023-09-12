@@ -1,54 +1,54 @@
-const Keyboard = require("./keyboard")
-const Deck = require("./deck")
+import { Keyboard } from "./keyboard"
+import { Deck } from "./deck"
 
-class Game {
+export class Game {
   constructor(renderInstructions) {
     this.instructions = renderInstructions
     this.deck = new Deck
     this.keyboard = new Keyboard(this.notePressed.bind(this))
 
     if (this.instructions) {
-      this.renderInstuctions()
-      this.instructionsListener()
+      this.#renderInstuctions()
     }
   }
 
-  renderInstuctions() {
-    const instructions = document.querySelector(".instructions")
-    instructions.innerHTML = this.#instructionsHTML()
-    instructions.style.display = "block"
-  }
-
-  instructionsListener() {
-    const playButton = document.getElementById("play-button")
-    playButton.addEventListener('click', () => {
-      this.#hideInstructions()
-    })
-  }
-
-  #hideInstructions() {
-    const instructions = document.querySelector(".instructions")
-    instructions.style.display = "none"
-  }
-
-  notePressed(note) {
+  notePressed = (note) => {
     var status = " "
     const currentCardKey = this.deck.currentCard().key
     const splitNote = note.split(' / ')
 
     if (splitNote.includes(currentCardKey)) {
       status = "correct"
-      this.#correctNote(status)
+      this.#manageTxt(status)
+      this.#correctNote()
     }
 
     else {
       status = "incorrect"
-      this.#wrongNote(status)
+      this.#manageTxt(status)
     }
   }
 
-  #correctNote(status) {
-    this.#manageTxt(status)
+  #renderInstuctions = () => {
+    const instructions = document.querySelector(".instructions")
+    instructions.innerHTML = this.#instructionsHTML()
+    instructions.style.display = "block"
+    this.#instructionsListener()
+  }
+  
+  #instructionsListener = () => {
+    const playButton = document.getElementById("play-button")
+    playButton.addEventListener('click', () => {
+      this.#hideInstructions()
+    })
+  }
+
+  #hideInstructions = () => {
+    const instructions = document.querySelector(".instructions")
+    instructions.style.display = "none"
+  }
+
+  #correctNote = () => {
     this.deck.nextCard()
 
     if (this.#isWon()) {
@@ -57,55 +57,25 @@ class Game {
     }
   }
 
-  #wrongNote(status) {
-    this.#manageTxt(status)
-  }
-
-  #manageTxt(status) {
+  #manageTxt = (status) => {
     const container = document.querySelector(".text")
-
-    if (status == "correct") {
-      container.innerHTML = this.#textHTML(status)
-      setTimeout(() => {
-        container.innerHTML = ''
-      }, 2000)
-    }
-
-    else if(status == "incorrect") {
-      container.innerHTML = this.#textHTML(status)
-      setTimeout(() => {
-        container.innerHTML = ''
-      }, 2000)
-    }
+    container.innerHTML = this.#textHTML(status)
+    setTimeout(() => {
+      container.innerHTML = ''
+    }, 2000)
   }
 
-  #textHTML(status) {
-    if (status == "correct") {
-      return `<p id="correct">CORRECT!</p>`
-    }
+  #textHTML = (status) => status === "correct" ? `<p id="correct">CORRECT!</p>` : `<p id="incorrect">Try Again</p>`;
 
-    else if (status == "incorrect") {
-      return `<p id="incorrect">Try Again</p>`
-    }
-  }
+  #isWon = () => this.deck.currentDeck.length === 0;
 
-  #isWon() {
-    if (this.deck.currentDeck.length == 0) {
-      return true
-    }
-
-    else {
-      return false
-    }
-  }
-
-  #showPopup() {
+  #showPopup = () => {
     const popup = document.querySelector(".popup")
     popup.innerHTML = this.#popupHTML()
     popup.style.display = "block"
   }
 
-  #popupListener() {
+  #popupListener = () => {
     const playAgainButton = document.getElementById('play-again-button')
 
     playAgainButton.addEventListener('click', () => {
@@ -113,36 +83,30 @@ class Game {
     })
   }
 
-  #hidePopup() {
+  #hidePopup = () => {
     const popup = document.querySelector(".popup")
     popup.style.display = "none"
   }
 
-  #popupHTML() {
-    return `
+  #popupHTML = () => 
+    `
       <div class="popup-content">
         <h2>Congratulations! You won the game.</h2>
         <button id="play-again-button">Play Again</button>
       </div>
     `
-  }
-
-  #playAgain() {
+    
+  #playAgain = () => {
     this.#hidePopup()
-    const anotherGame = new Game(false)
+    anotherGame = new Game(false)
   }
 
-  #instructionsHTML() {
-    return `
+  #instructionsHTML = () => 
+    `
       <div class="instructions-content">
         <p>Press the key on the piano that corresponds to the<br>
         presented flash card. Click "Let's Play" to begin!</p>
         <button id="play-button">Let's Play!</p>
       </div>
     `
-  }
 }
-
-
-
-module.exports = Game;

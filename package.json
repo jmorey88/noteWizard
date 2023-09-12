@@ -1,18 +1,18 @@
 {
-    "name": "notewizard",
-    "version": "1.0.0",
-    "description": "A music education game teaching users to read music notes using a virtual paino keyboard and flash cards.",
-    "main": "index.js",
-    "scripts": {
-      "webpack-dev": "webpack --watch --mode=development"
-    },
-    "keywords": [],
-    "author": "Joel Morey",
-    "license": "MIT",
-  
-
+  "name": "notewizard",
+  "version": "1.0.0",
+  "description": "A music education game teaching users to read music notes using a virtual paino keyboard and flash cards.",
+  "main": "index.html",
+  "scripts": {
+    "webpack-dev": "webpack --watch --mode=development"
+  },
+  "author": "Joel Morey",
+  "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.21"
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
   }
-
 }
