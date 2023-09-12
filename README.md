@@ -167,7 +167,7 @@ export class Game {
   constructor(renderInstructions) {
     this.instructions = renderInstructions
     this.deck = new Deck
-    this.keyboard = new Keyboard(this.notePressed())
+    this.keyboard = new Keyboard(this.notePressed)
 
     if (this.instructions) {
       this.#renderInstuctions()
