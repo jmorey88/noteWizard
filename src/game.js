@@ -1,112 +1,112 @@
-import { Keyboard } from "./keyboard"
-import { Deck } from "./deck"
+import Keyboard from './keyboard';
+import Deck from './deck';
 
-export class Game {
-  constructor(renderInstructions) {
-    this.instructions = renderInstructions
-    this.deck = new Deck
-    this.keyboard = new Keyboard(this.notePressed)
+const CORRECT = 'correct';
+const INCORRECT = 'incorrect';
 
-    if (this.instructions) {
-      this.#renderInstuctions()
-    }
-  }
+export default class Game {
+	constructor(renderInstructions) {
+		this.instructions = renderInstructions;
+		this.deck = new Deck();
+		this.keyboard = new Keyboard(this.notePressed);
 
-  notePressed = (note) => {
-    var status = " "
-    const currentCardKey = this.deck.currentCard().key
-    const splitNote = note.split(' / ')
+		if (this.instructions) {
+			this.#renderInstuctions();
+		}
+	}
 
-    if (splitNote.includes(currentCardKey)) {
-      status = "correct"
-      this.#manageTxt(status)
-      this.#correctNote()
-    }
+	notePressed = (note) => {
+		var status = ' ';
+		const currentCardKey = this.deck.currentCard().key;
+		const splitNote = note.split(' / ');
 
-    else {
-      status = "incorrect"
-      this.#manageTxt(status)
-    }
-  }
+		if (splitNote.includes(currentCardKey)) {
+			status = CORRECT;
+			this.#correctNote();
+		} else {
+			status = INCORRECT;
+		}
+		this.#manageTxt(status);
+	};
 
-  #renderInstuctions = () => {
-    const instructions = document.querySelector(".instructions")
-    instructions.innerHTML = this.#instructionsHTML()
-    instructions.style.display = "block"
-    this.#instructionsListener()
-  }
-  
-  #instructionsListener = () => {
-    const playButton = document.getElementById("play-button")
-    playButton.addEventListener('click', () => {
-      this.#hideInstructions()
-    })
-  }
+	#renderInstuctions = () => {
+		const instructions = document.querySelector('.instructions');
+		instructions.innerHTML = this.#instructionsHTML();
+		instructions.style.display = 'block';
+		this.#instructionsListener();
+	};
 
-  #hideInstructions = () => {
-    const instructions = document.querySelector(".instructions")
-    instructions.style.display = "none"
-  }
+	#instructionsListener = () => {
+		const playButton = document.getElementById('play-button');
+		playButton.addEventListener('click', () => {
+			this.#hideInstructions();
+		});
+	};
 
-  #correctNote = () => {
-    this.deck.nextCard()
+	#hideInstructions = () => {
+		const instructions = document.querySelector('.instructions');
+		instructions.style.display = 'none';
+	};
 
-    if (this.#isWon()) {
-      this.#showPopup()
-      this.#popupListener()
-    }
-  }
+	#correctNote = () => {
+		this.deck.nextCard();
 
-  #manageTxt = (status) => {
-    const container = document.querySelector(".text")
-    container.innerHTML = this.#textHTML(status)
-    setTimeout(() => {
-      container.innerHTML = ''
-    }, 2000)
-  }
+		if (this.#isWon()) {
+			this.#showPopup();
+			this.#popupListener();
+		}
+	};
 
-  #textHTML = (status) => status === "correct" ? `<p id="correct">CORRECT!</p>` : `<p id="incorrect">Try Again</p>`;
+	#manageTxt = (status) => {
+		const container = document.querySelector('.text');
+		container.innerHTML = this.#textHTML(status);
+		setTimeout(() => {
+			container.innerHTML = '';
+		}, 2000);
+	};
 
-  #isWon = () => this.deck.currentDeck.length === 0;
+	#textHTML = (status) => (status === CORRECT ? `<p id="correct">CORRECT!</p>` : `<p id="incorrect">Try Again</p>`);
 
-  #showPopup = () => {
-    const popup = document.querySelector(".popup")
-    popup.innerHTML = this.#popupHTML()
-    popup.style.display = "block"
-  }
+	#isWon = () => this.deck.currentDeck.length === 0;
 
-  #popupListener = () => {
-    const playAgainButton = document.getElementById('play-again-button')
+	#showPopup = () => {
+		const popup = document.querySelector('.popup');
+		popup.innerHTML = this.#popupHTML();
+		popup.style.display = 'block';
+	};
 
-    playAgainButton.addEventListener('click', () => {
-      this.#playAgain()
-    })
-  }
+	#popupListener = () => {
+		const playAgainButton = document.getElementById('play-again-button');
 
-  #hidePopup = () => {
-    const popup = document.querySelector(".popup")
-    popup.style.display = "none"
-  }
+		playAgainButton.addEventListener('click', () => {
+			this.#playAgain();
+		});
+	};
 
-  #popupHTML = () => 
-    `
+	#hidePopup = () => {
+		const popup = document.querySelector('.popup');
+		popup.style.display = 'none';
+	};
+
+	#popupHTML = () =>
+		`
       <div class="popup-content">
         <h2>Congratulations! You won the game.</h2>
         <button id="play-again-button">Play Again</button>
       </div>
-    `
-    
-  #playAgain = () => {
-    this.#hidePopup()
-    anotherGame = new Game(false)
-  }
+    `;
 
-  #instructionsHTML = () => 
-    `
+	#playAgain = () => {
+		this.#hidePopup();
+		anotherGame = new Game(false);
+	};
+
+	#instructionsHTML = () =>
+		`
       <div class="instructions-content">
         <p>Press the key on the piano that corresponds to the<br>
         presented flash card. Click "Let's Play" to begin!</p>
         <button id="play-button">Let's Play!</p>
       </div>
-    `
+    `;
 }
