@@ -4,6 +4,7 @@
   "description": "A music education game teaching users to read music notes using a virtual paino keyboard and flash cards.",
   "main": "index.html",
   "scripts": {
+    "start": "webpack serve --mode production", 
     "webpack-dev": "webpack --watch --mode=development"
   },
   "author": "Joel Morey",
